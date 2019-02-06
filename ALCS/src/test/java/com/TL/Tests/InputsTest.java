@@ -35,13 +35,7 @@ public class InputsTest extends BaseClass {
 	}
 	
 	//To verify successful login
-	@Test
-	public void TC_01_successfull_login() {
-		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
-		loginMethods.UserLogin(); 
-		Assert.assertTrue(genric.element(InputsObjects.Main_header).isDisplayed());
-	}
-
+	
 	//To verify Standard offer letter page is loaded successfully.
 	@Test
 	public void TC_02_go_to_offer_letter_page() {

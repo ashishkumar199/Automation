@@ -16,7 +16,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class LoginTest extends BaseClass {
-	
+
 	ExtentReports extent = ExtentManager.getReporter(filePath);
 	
 	@BeforeMethod	

@@ -25,7 +25,7 @@ public class LoginTest extends BaseClass {
 		driver = genric.getDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		genric.launchApplication();		
+		genric.launchApplication();
 
 	}
 	

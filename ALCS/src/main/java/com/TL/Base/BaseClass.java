@@ -14,7 +14,7 @@ import com.TL.Utils.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-
+ 
 public class BaseClass 
 {
 	protected static WebDriver driver;

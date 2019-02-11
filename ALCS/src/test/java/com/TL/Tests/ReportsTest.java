@@ -17,10 +17,10 @@ import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class ReportsTest extends BaseClass {
-	
+		
 	@BeforeMethod
-	public void before() {
-		// System.out.println("before everything");
+	public void before() {		
+		
 		genric = new Genric(driver);
 		driver = genric.getDriver();
 		driver.manage().window().maximize();
@@ -31,7 +31,8 @@ public class ReportsTest extends BaseClass {
 		loginMethods = new LoginMethods(driver, genric);
 		cv = new CsvReader(DownloadPath);
 		
-	}
+	}	
+        
 	//To verify that Reports Page is loading
 	@Test
 	public void TC_01_VerifyReportsPageLoading() {

@@ -19,5 +19,7 @@ public class PagesLoadingObjects {
 	public static final String dashboardHeader="xpath:.//h1[contains(text(), 'Dashboard')]";
 	public static final String dashboardBCT="xpath:.//li[contains(text(), 'Dashboard')]";
 	public static final String All_page_text ="xpath:.//ol[@class = 'breadcrumb']/li[@class = 'active']";
+	public static final String Page_Header ="xpath:.//h1[@class='page-header']";
+	
 	
 }

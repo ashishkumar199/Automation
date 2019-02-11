@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ALCS" thread-count="2" parallel="methods" >
 <test name="ALCS1">
- <parameter name="browser" value="chrome" />
 <classes>
-<class name="com.TL.Tests.LoginTest"> </class>
+<!--<class name="com.TL.Tests.PagesLoadingTest"> </class> -->
+<!--<class name="com.TL.Tests.ReportsTest"> </class> -->
+<class name="com.TL.Tests.InputsTest"> </class> 
 </classes>
 </test>
 </suite>

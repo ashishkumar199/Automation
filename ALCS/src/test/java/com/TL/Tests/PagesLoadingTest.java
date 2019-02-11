@@ -66,11 +66,11 @@ public class PagesLoadingTest {
 			}
 			return result;
 		}
-		
+
 		// Verify that all pages under master tab are loading properly
 		@Test(dataProvider = "MaterPages")
 		public void TC_02_MasterTabPagesLoading(String Root, String Parent, String Child) throws InterruptedException {
-			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
+			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
 			inputs.hamburgericonclick();
 			driver.findElement(
@@ -86,8 +86,10 @@ public class PagesLoadingTest {
 			driver.findElement(
 					By.xpath(".//a[text()='"+ Child + "']")).click();	
 			genric.waitForLoading();
+			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());
 			Assert.assertTrue(genric.element(PagesLoadingObjects.All_page_text).isDisplayed(), 
 					"Expected: Page is Displayed");
+			
 		}
 
 		

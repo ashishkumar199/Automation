@@ -33,8 +33,7 @@ public class InputsTest extends BaseClass {
 		cv = new CsvReader(csvpath);
 		loginMethods = new LoginMethods(driver, genric);
 	}
-	
-	//To verify successful login
+
 	
 	//To verify Standard offer letter page is loaded successfully.
 	@Test

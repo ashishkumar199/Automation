@@ -351,7 +351,7 @@ public class Genric {
 			return By.className(locatorValue);
 		case css:
 			return By.cssSelector(locatorValue);
-		case linktext:
+		case linkText: 
 			return By.linkText(locatorValue);
 		case tagname:
 			return By.tagName(locatorValue);

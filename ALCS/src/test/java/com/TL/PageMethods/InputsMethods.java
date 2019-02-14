@@ -56,7 +56,7 @@ public void loginAlcs() {
 		genric.waitForLoading();
 	}
 
-	public  void hamburgericonclick() {
+	public  void HamburgerIconClick() {
 		genric.waitForLoading();
 		genric.element(InputsObjects.Main_header).click();
 		genric.waitForLoading();

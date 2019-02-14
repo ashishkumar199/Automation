@@ -309,11 +309,11 @@ public class PagesLoadingTest {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView();", driver.findElement(
                     By.xpath(".//a[text()='"+ Parent + "']")));
-			driver.findElement(By.xpath(".//a[text()='"+ Parent + "']")).click();	
+			driver.findElement(By.xpath(".//a[text()='"+ Parent + "']")).sendKeys(Keys.ENTER);
 			genric.waitForLoading();									
 		   
 			js.executeScript("arguments[0].scrollIntoView();", driver.findElement(
-						                              By.xpath(".//a[text()='"+ Child + "']")));
+				    By.xpath(".//a[text()='"+ Child + "']")));
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();

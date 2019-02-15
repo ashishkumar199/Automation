@@ -22,7 +22,6 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 
-
 public class PagesLoadingTest {
 	
 	public class LoginTest extends BaseClass {

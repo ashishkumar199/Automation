@@ -178,7 +178,7 @@ public class Genric {
 		return driver.getCurrentUrl();
 	}
 
-	protected void switchToFrame(WebElement element) {
+	public void switchToFrame(WebElement element) {
 		driver.switchTo().frame(element);
 	}
 

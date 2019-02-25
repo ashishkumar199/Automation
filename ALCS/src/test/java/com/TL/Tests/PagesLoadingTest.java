@@ -22,9 +22,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
 
-public class PagesLoadingTest {
-	
-	public class LoginTest extends BaseClass {
+public class PagesLoadingTest extends BaseClass {
 
 		ExtentReports extent = ExtentManager.getReporter(filePath);
 		
@@ -340,4 +338,3 @@ public class PagesLoadingTest {
     }
 
   }
-}

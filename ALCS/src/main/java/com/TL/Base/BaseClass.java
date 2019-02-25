@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import com.TL.PageMethods.InputsMethods;
+import com.TL.PageMethods.LOPMethods;
 import com.TL.PageMethods.LoginMethods;
 import com.TL.PageMethods.ReportsMethods;
 import com.TL.PageObjects.PagesLoadingObjects;
@@ -36,6 +37,7 @@ public class BaseClass
 	protected InputsMethods inputs;
 	protected PagesLoadingObjects PageLoading;
 	protected LoginMethods loginMethods;
+	protected LOPMethods LOPMethods;
 	protected CsvReader cv;
 	
 	public WebDriver getDriver() {

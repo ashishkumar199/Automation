@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
+import com.TL.Base.RetryAnalyzer;
 import com.TL.PageMethods.LoginMethods;
 import com.TL.PageMethods.InputsMethods;
 import com.TL.PageMethods.LOPMethods;
@@ -26,11 +27,12 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		genric.launchApplication();
 		loginMethods = new LoginMethods(driver, genric);
 		LOPMethods = new LOPMethods(driver, genric);
-		inputs = new InputsMethods(driver, genric);
+		inputs = new InputsMethods(driver, genric);		
+	
 	}
 
 	//To verify Adding loss of pay for an associate
-	@Test()
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_01_Add_Loss_Of_Pay() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -41,7 +43,7 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 	}
 	
 	//To verify cancelling loss of pay for an associate and verify it in cancelled status
-	@Test()
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_02_Cancel_Loss_Of_Pay() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -53,18 +55,20 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		LOPMethods.Go_to_Revised_Loss_Of_Pay_Page();
 		LOPMethods.SelectClientCancelledStatus();
 				
-	}
-		
+	}		
 	
 	
 	@AfterMethod
-    protected void afterMethod(ITestResult result) {
+    protected void afterMethod(ITestResult result, RetryAnalyzer retry) {
+		
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(LogStatus.FAIL, result.getThrowable());
             String screenshot_path= genric.captureScreenShot(driver, result.getName());
     		String image= test.addScreenCapture(screenshot_path);
     		test.log(LogStatus.INFO, result.getName(), image);
-        } else if (result.getStatus() == ITestResult.SKIP) {
+        }
+        
+       else if (result.getStatus() == ITestResult.SKIP) {
            test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
     
         } else {

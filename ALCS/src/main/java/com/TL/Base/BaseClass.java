@@ -32,7 +32,7 @@ public class BaseClass
 	
 	protected String Testdatasheetpath = PropertyReader
 			.readDataProperty("TestDataSheetPath");
-	
+	protected String methodname;
 	protected ReportsMethods reports;
 	protected InputsMethods inputs;
 	protected PagesLoadingObjects PageLoading;
@@ -61,6 +61,8 @@ public class BaseClass
     protected void afterSuite() {    	
         extent.close();
     }
+	
+	
 	
 	
 }

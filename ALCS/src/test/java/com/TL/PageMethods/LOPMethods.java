@@ -1,6 +1,4 @@
 package com.TL.PageMethods;
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

@@ -5,7 +5,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
@@ -46,7 +45,7 @@ public class LoginTest extends BaseClass {
 	}
 
 	//Verify that user is able to login with valid Login ID and password
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_02_Correct_Credentials_Login_Success() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
@@ -64,13 +63,16 @@ public class LoginTest extends BaseClass {
 	
 	
 	@AfterMethod
-    protected void afterMethod(ITestResult result) {
+    protected void afterMethod(ITestResult result, RetryAnalyzer retry) {
+		
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(LogStatus.FAIL, result.getThrowable());
             String screenshot_path= genric.captureScreenShot(driver, result.getName());
     		String image= test.addScreenCapture(screenshot_path);
     		test.log(LogStatus.INFO, result.getName(), image);
-        } else if (result.getStatus() == ITestResult.SKIP) {
+        }
+        
+       else if (result.getStatus() == ITestResult.SKIP) {
            test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
     
         } else {
@@ -82,4 +84,6 @@ public class LoginTest extends BaseClass {
         driver.quit();
        
     }
+	
+	
 }

@@ -62,28 +62,22 @@ public class LoginTest extends BaseClass {
 	}
 	
 	
+	
 	@AfterMethod
-    protected void afterMethod(ITestResult result, RetryAnalyzer retry) {
-		
+    protected void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(LogStatus.FAIL, result.getThrowable());
             String screenshot_path= genric.captureScreenShot(driver, result.getName());
     		String image= test.addScreenCapture(screenshot_path);
     		test.log(LogStatus.INFO, result.getName(), image);
-        }
-        
-       else if (result.getStatus() == ITestResult.SKIP) {
-           test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
-    
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
         } else {
             test.log(LogStatus.PASS, "Test passed");
         }
-                  
+
         extent.endTest(test);        
         extent.flush();
         driver.quit();
-       
     }
-	
-	
 }

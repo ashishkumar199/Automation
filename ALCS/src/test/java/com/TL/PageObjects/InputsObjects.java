@@ -4,30 +4,10 @@ public class InputsObjects {
 
 
 		
-	public static final String Inputs_Btn="xpath:.//span[contains (text(), 'Inputs')]";
-	public static final String AssociateMaster_Btn="xpath:.//a[@id='menu7']";
-	public static final String StandardOfferLetter_Btn="xpath:.//a[text() = 'Standard Offer Letter']";
-	public static final String MultipleRadio_Btn="xpath:.//label[text()='Multiple']";
-	public static final String Upload_Btn="xpath:.//label[@for='AlcsContentPlaceHolder_fuBankStatementMassUpload']";
-	
-	public static final String links = "xpath:.//a";
-	public static final String drag = "xpath:.//*[@id='menuStructure']//li[@class = 'open' or @class = 'active']//div[@class = 'jspDrag']/div[2]";
-	public static final String Main_header = "xpath:.//a[@class = 'navbar-brand']";
-	public static final String user_name = "xpath:.//input[@id='txtLoginId']";
-	public static final String Password = "xpath:.//input[@id='txtPassword']";
-	public static final String hamburger_icon = "xpath:.//ul[@class='nav navbar-nav toggle-ctrl']/li[1]";
-	public static final String Login_btn = "xpath:.//input[@id='btnsignin']";
-	public static final String iner_release_bttn = "xpath:.//*[@id='menuStructure']/li//span[contains(text(), 'Input')]/../../ul/li";
-	public static final String release_button = "xpath:.//*[@id='menuStructure']/li//span[contains(text(), 'Input')]";
-	public static final String iner_rel_btn_dropdown = "xpath:.//*[@id='menuStructure']//li[@class = 'open' or @class = 'active']//ul/li";
-	public static final String iner_rel_btn_dropdown1="xpath:.//ol[@class = 'breadcrumb']/li[@class = 'active']";
-	public static final String Submit_btn="xpath:.//input[@value='Submit']";
-	public static final String Validation_Msg_Mobile="xpath:.//div[@class='validation-error-message invalid-mobile-msg hidden-msg']";
-	public static final String Validation_Msg_Password="xpath:.//div[@class='validation-error-message invalid-password-msg hidden-msg']";
-	public static final String textual = "xpath:.//*[@id='menuStructure']//a";
+
+
 	
 	
-	public static final String input_button = "xpath:.//*[@id='menuStructure']/li//span[contains(text(), 'Input')]";
 	public static final String Browse_file_btn="xpath:.//label[@for='AlcsContentPlaceHolder_fuBankStatementMassUpload']";
 	public static final String All_page_text ="xpath:.//ol[@class = 'breadcrumb']/li[@class = 'active']";
 	public static final String upload_btn = "xpath:.//*[@id='AlcsContentPlaceHolder_btnUpload']";

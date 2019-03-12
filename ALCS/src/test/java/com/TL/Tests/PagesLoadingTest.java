@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
-import com.TL.PageMethods.InputsMethods;
+import com.TL.PageMethods.DashboardPageMethods;
 import com.TL.PageMethods.LoginPageMethods;
 import com.TL.PageMethods.ReportsPageMethods;
 import com.TL.PageObjects.DashboardPageObjects;
@@ -33,9 +33,8 @@ public class PagesLoadingTest extends BaseClass {
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			genric.launchApplication();		
-			PageLoading = new DashboardPageObjects(driver, genric);
+			Dashboard = new DashboardPageMethods(driver, genric);
 			reports = new ReportsPageMethods(driver, genric);
-			inputs = new InputsMethods(driver, genric);
 			loginMethods = new LoginPageMethods(driver, genric);
 		}
 		
@@ -44,7 +43,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_01_DashboardPageLoading() {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.element(DashboardPageObjects.dashboardlink).click();
 			Assert.assertTrue(genric.element(DashboardPageObjects.dashboardHeader).isDisplayed(), 
 					"Expected: Dashboard Page is Displayed");
@@ -73,7 +72,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_02_MasterTabPagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();
@@ -110,7 +109,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_03_InputsPagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException, AWTException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();
@@ -148,7 +147,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_04_InvoicePagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException, AWTException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();
@@ -185,7 +184,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_05_CollectionPagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException, AWTException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();
@@ -222,7 +221,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_06_ReleasePagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException, AWTException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();
@@ -260,7 +259,7 @@ public class PagesLoadingTest extends BaseClass {
 		public void TC_07_ReconAndAuditPagesLoading(String Root, String Parent, String Child, String Page_Title) throws InterruptedException, AWTException {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();		
@@ -299,7 +298,7 @@ public class PagesLoadingTest extends BaseClass {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Root+"_"+Parent+"_"+Child);
 			
 			loginMethods.UserLogin();
-			inputs.HamburgerIconClick();
+			Dashboard.HamburgerIconClick();
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//span[text()='"+ Root + "']")).click();
 			genric.waitForLoading();

@@ -9,7 +9,7 @@ import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
 import com.TL.Base.RetryAnalyzer;
 import com.TL.PageMethods.LoginPageMethods;
-import com.TL.PageMethods.InputsMethods;
+import com.TL.PageMethods.DashboardPageMethods;
 import com.TL.PageMethods.LOPPageMethods;
 import com.TL.PageMethods.LOPApprovalPageMethods;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -27,9 +27,10 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		driver.manage().deleteAllCookies();
 		genric.launchApplication();
 		loginMethods = new LoginPageMethods(driver, genric);
+		Dashboard = new DashboardPageMethods(driver, genric);
 		LOPPageMethods = new LOPPageMethods(driver, genric);
 		LOPApprovalPageMethods = new LOPApprovalPageMethods(driver, genric);
-		inputs = new InputsMethods(driver, genric);		
+	
 	
 	}
 
@@ -38,7 +39,7 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 	public void TC_01_Add_Loss_Of_Pay() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
-		inputs.HamburgerIconClick();
+		Dashboard.HamburgerIconClick();
 		LOPPageMethods.Go_to_Loss_Of_Pay_Page(); 
 		LOPPageMethods.SelectClientLOP();
 		LOPPageMethods.SelectEmployeeAndApplyLOP();
@@ -49,11 +50,11 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 	public void TC_02_Cancel_Loss_Of_Pay() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
-		inputs.HamburgerIconClick();
+		Dashboard.HamburgerIconClick();
 		LOPApprovalPageMethods.Go_to_Loss_Of_Pay_Approval_Page();
 		LOPApprovalPageMethods.SelectClientCancelLOP();
 		LOPPageMethods.SelectEmployeeAndCancelLOP();
-		inputs.HamburgerIconClick();
+		Dashboard.HamburgerIconClick();
 		LOPApprovalPageMethods.Go_to_Loss_Of_Pay_Approval_Page();
 		LOPApprovalPageMethods.SelectClientCancelledStatus();
 				

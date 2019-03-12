@@ -174,7 +174,7 @@ public class Genric {
 		System.out.println(message);
 	}
 
-	protected String getCurrentURL() {
+	public String getCurrentURL() {
 		return driver.getCurrentUrl();
 	}
 

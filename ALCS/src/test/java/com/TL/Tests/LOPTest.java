@@ -8,9 +8,10 @@ import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
 import com.TL.Base.RetryAnalyzer;
-import com.TL.PageMethods.LoginMethods;
+import com.TL.PageMethods.LoginPageMethods;
 import com.TL.PageMethods.InputsMethods;
-import com.TL.PageMethods.LOPMethods;
+import com.TL.PageMethods.LOPPageMethods;
+import com.TL.PageMethods.LOPApprovalPageMethods;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -25,8 +26,9 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		genric.launchApplication();
-		loginMethods = new LoginMethods(driver, genric);
-		LOPMethods = new LOPMethods(driver, genric);
+		loginMethods = new LoginPageMethods(driver, genric);
+		LOPPageMethods = new LOPPageMethods(driver, genric);
+		LOPApprovalPageMethods = new LOPApprovalPageMethods(driver, genric);
 		inputs = new InputsMethods(driver, genric);		
 	
 	}
@@ -37,47 +39,43 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		inputs.HamburgerIconClick();
-		LOPMethods.Go_to_Loss_Of_Pay_Page();
-		LOPMethods.SelectClientLOP();
-		LOPMethods.SelectEmployeeAndApplyLOP();
+		LOPPageMethods.Go_to_Loss_Of_Pay_Page(); 
+		LOPPageMethods.SelectClientLOP();
+		LOPPageMethods.SelectEmployeeAndApplyLOP();
 	}
 	
-	//To verify cancelling loss of pay for an associate and verify it in cancelled status
+	//To verify canceling loss of pay for an associate and verify it in cancelled status
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_02_Cancel_Loss_Of_Pay() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		inputs.HamburgerIconClick();
-		LOPMethods.Go_to_Revised_Loss_Of_Pay_Page();
-		LOPMethods.SelectClientCancelLOP();
-		LOPMethods.SelectEmployeeAndCancelLOP();
+		LOPApprovalPageMethods.Go_to_Loss_Of_Pay_Approval_Page();
+		LOPApprovalPageMethods.SelectClientCancelLOP();
+		LOPPageMethods.SelectEmployeeAndCancelLOP();
 		inputs.HamburgerIconClick();
-		LOPMethods.Go_to_Revised_Loss_Of_Pay_Page();
-		LOPMethods.SelectClientCancelledStatus();
+		LOPApprovalPageMethods.Go_to_Loss_Of_Pay_Approval_Page();
+		LOPApprovalPageMethods.SelectClientCancelledStatus();
 				
-	}		
-	
-	
-	@AfterMethod
-    protected void afterMethod(ITestResult result, RetryAnalyzer retry) {
 		
+	}	 	
+	
+
+	@AfterMethod
+    protected void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(LogStatus.FAIL, result.getThrowable());
             String screenshot_path= genric.captureScreenShot(driver, result.getName());
     		String image= test.addScreenCapture(screenshot_path);
     		test.log(LogStatus.INFO, result.getName(), image);
-        }
-        
-       else if (result.getStatus() == ITestResult.SKIP) {
-           test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
-    
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
         } else {
             test.log(LogStatus.PASS, "Test passed");
         }
-                  
+
         extent.endTest(test);        
         extent.flush();
         driver.quit();
-       
     }
 }

@@ -9,17 +9,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
-import com.TL.PageObjects.ReportsObjects;
+import com.TL.PageObjects.ReportsPageObjects;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.PropertyReader;
 
 import org.openqa.selenium.Keys;
 
 
-public class ReportsMethods extends BaseClass{
+public class ReportsPageMethods extends BaseClass{
 	public WebDriver driver;
 	Genric genric;
-	public ReportsMethods(WebDriver driver, Genric genric){
+	public ReportsPageMethods(WebDriver driver, Genric genric){
 		this.driver=driver;
 		this.genric=genric;
 	}
@@ -27,91 +27,91 @@ public class ReportsMethods extends BaseClass{
 	// Navigate to reports page
 	public void proceedToReports()
 	{
-		genric.element(ReportsObjects.Hamburger_Menu).click();
+		genric.element(ReportsPageObjects.Hamburger_Menu).click();
 		genric.waitForLoading();	
-		genric.element(ReportsObjects.Recon).click();
+		genric.element(ReportsPageObjects.Recon).click();
 		genric.waitForLoading();	
-		genric.element(ReportsObjects.Reconcilation_button).click();
+		genric.element(ReportsPageObjects.Reconcilation_button).click();
 		genric.waitForLoading();	
-		genric.element(ReportsObjects.View_And_Download_Report_button).click();
+		genric.element(ReportsPageObjects.View_And_Download_Report_button).click();
 	}
 	
 	// Select report, download and verify report name in downloaded csv file
 	public void SelectReport(String Report_Names, String Client_Name_ID) throws IOException {
 
 		genric.waitForLoading();
-		genric.element(ReportsObjects.Select_Report).click();
+		genric.element(ReportsPageObjects.Select_Report).click();
 		genric.waitForLoading();
-		genric.element(ReportsObjects.dropdown_Search).sendKeys(Report_Names);
-		genric.element(ReportsObjects.reportPlaceHolder).click();
+		genric.element(ReportsPageObjects.dropdown_Search).sendKeys(Report_Names);
+		genric.element(ReportsPageObjects.reportPlaceHolder).click();
 		genric.waitForLoading();	
 		
 		
 		try {
-	    if(genric.element(ReportsObjects.Invoice_Business_Type).isDisplayed())			
+	    if(genric.element(ReportsPageObjects.Invoice_Business_Type).isDisplayed())			
 		 {		
-		   genric.element(ReportsObjects.Invoice_Business_Type_dropdown).click();
-		   genric.element(ReportsObjects.dropdown_Search)
+		   genric.element(ReportsPageObjects.Invoice_Business_Type_dropdown).click();
+		   genric.element(ReportsPageObjects.dropdown_Search)
 		            .sendKeys(PropertyReader.readDataProperty("InvoiceBusinessType"));
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(Keys.ENTER);		   
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(Keys.ENTER);		   
 	       genric.waitForLoading();	      
 	     }
 		
-		if(genric.element(ReportsObjects.Client_Name).isDisplayed())
+		if(genric.element(ReportsPageObjects.Client_Name).isDisplayed())
 		 {
-		   genric.element(ReportsObjects.clientNames).click();
+		   genric.element(ReportsPageObjects.clientNames).click();
 		   genric.driver.findElement(
 					By.xpath(".//*[@class='form-field multiSelect']/descendant::*[text()='"
 							+ Client_Name_ID + "']")).click();		   
 	     }
 		
-		if(genric.element(ReportsObjects.Month).isDisplayed())
+		if(genric.element(ReportsPageObjects.Month).isDisplayed())
 		 {
-		   genric.element(ReportsObjects.Month).click();
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("Month"));
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(Keys.ENTER);		
+		   genric.element(ReportsPageObjects.Month).click();
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("Month"));
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(Keys.ENTER);		
 	       genric.waitForLoading();	       
 		 }
 		
-		if(genric.element(ReportsObjects.Year).isDisplayed())		
+		if(genric.element(ReportsPageObjects.Year).isDisplayed())		
 		 {
-		   genric.element(ReportsObjects.Year).click();
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("Year"));
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(Keys.ENTER);		
+		   genric.element(ReportsPageObjects.Year).click();
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("Year"));
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(Keys.ENTER);		
 	       genric.waitForLoading();	       
 		 }
 		
-		if(genric.element(ReportsObjects.TypeOfEvent).isDisplayed())		
+		if(genric.element(ReportsPageObjects.TypeOfEvent).isDisplayed())		
 		 {
-		   genric.element(ReportsObjects.TypeOfEvent_dropdown).click();
-		   genric.element(ReportsObjects.TypeOfEvent_dropdown).sendKeys(PropertyReader.readDataProperty("TypeOfEvent"));
+		   genric.element(ReportsPageObjects.TypeOfEvent_dropdown).click();
+		   genric.element(ReportsPageObjects.TypeOfEvent_dropdown).sendKeys(PropertyReader.readDataProperty("TypeOfEvent"));
 	       genric.waitForLoading();	       
 		 }
 		
-		if(genric.element(ReportsObjects.Mandate_Type_dropdown).isDisplayed())		
+		if(genric.element(ReportsPageObjects.Mandate_Type_dropdown).isDisplayed())		
 		 {
-		   genric.element(ReportsObjects.Mandate_Type_dropdown).click();
-		   genric.element(ReportsObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("MandateType"));
+		   genric.element(ReportsPageObjects.Mandate_Type_dropdown).click();
+		   genric.element(ReportsPageObjects.dropdown_Search).sendKeys(PropertyReader.readDataProperty("MandateType"));
 	       genric.waitForLoading();	       
 		 }
 		
-		if(genric.element(ReportsObjects.Candidate_Type).isDisplayed())
+		if(genric.element(ReportsPageObjects.Candidate_Type).isDisplayed())
 		 {		
 		 //  genric.waitUntilClickable(genric.element(ReportsKeyword.Select_dropdown_Candidate_Type));
-		   genric.element(ReportsObjects.Select_dropdown_Candidate_Type).click();
-		   genric.element(ReportsObjects.Select_Candidate_Type).click();
+		   genric.element(ReportsPageObjects.Select_dropdown_Candidate_Type).click();
+		   genric.element(ReportsPageObjects.Select_Candidate_Type).click();
 	       genric.waitForLoading();	   	   
 		 }
 		
-		if(genric.element(ReportsObjects.fromDate).isDisplayed())
+		if(genric.element(ReportsPageObjects.fromDate).isDisplayed())
 		 {
-		   genric.element(ReportsObjects.fromDateInput).sendKeys(PropertyReader.readDataProperty("ReportsStartDate"));		  
+		   genric.element(ReportsPageObjects.fromDateInput).sendKeys(PropertyReader.readDataProperty("ReportsStartDate"));		  
 		   genric.waitForLoading();
 		 }
 		
-		if(genric.element(ReportsObjects.ToDateInput).isDisplayed())
+		if(genric.element(ReportsPageObjects.ToDateInput).isDisplayed())
 		 {
-		   genric.element(ReportsObjects.ToDateInput).sendKeys(PropertyReader.readDataProperty("ReportsEndDate"));		 
+		   genric.element(ReportsPageObjects.ToDateInput).sendKeys(PropertyReader.readDataProperty("ReportsEndDate"));		 
 		   genric.waitForLoading();
 		 }
 		
@@ -120,7 +120,7 @@ public class ReportsMethods extends BaseClass{
 		}
 				
 		genric.waitForLoading();
-		genric.element(ReportsObjects.Download_btn).click();
+		genric.element(ReportsPageObjects.Download_btn).click();
 		genric.waitForLoading();
 		
 	
@@ -166,7 +166,7 @@ public class ReportsMethods extends BaseClass{
 		  String name = null;
 		  int index = 0;
 			Scanner dataScanner = null;
-			Scanner scanner = new Scanner(ReportsMethods.lastFileModified(PropertyReader.readDataProperty("DownloadPath")));
+			Scanner scanner = new Scanner(ReportsPageMethods.lastFileModified(PropertyReader.readDataProperty("DownloadPath")));
 			//Scanner scanner = new Scanner(new File(PropertyReader.readDataProperty("DownloadPath")));	
 		while (scanner.hasNextLine()) {
 			dataScanner = new Scanner(scanner.nextLine());

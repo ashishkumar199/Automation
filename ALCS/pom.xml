@@ -197,7 +197,7 @@
 								
 								<fileSet>
 									<!-- Report directory Path -->
-									<directory>D:\\Automation\\Automation_Git\\ALCS\\target</directory>
+									<directory>D:\\ALCS\\Automation\\ALCS\\target</directory>
 									<includes>
 										<!-- Report file name -->
 										<include>Extent.html</include>

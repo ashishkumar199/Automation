@@ -14,9 +14,9 @@ import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
 import com.TL.PageMethods.InputsMethods;
-import com.TL.PageMethods.LoginMethods;
-import com.TL.PageMethods.ReportsMethods;
-import com.TL.PageObjects.PagesLoadingObjects;
+import com.TL.PageMethods.LoginPageMethods;
+import com.TL.PageMethods.ReportsPageMethods;
+import com.TL.PageObjects.DashboardPageObjects;
 import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
@@ -33,10 +33,10 @@ public class PagesLoadingTest extends BaseClass {
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			genric.launchApplication();		
-			PageLoading = new PagesLoadingObjects(driver, genric);
-			reports = new ReportsMethods(driver, genric);
+			PageLoading = new DashboardPageObjects(driver, genric);
+			reports = new ReportsPageMethods(driver, genric);
 			inputs = new InputsMethods(driver, genric);
-			loginMethods = new LoginMethods(driver, genric);
+			loginMethods = new LoginPageMethods(driver, genric);
 		}
 		
 		// Verify that dashboard page is loading
@@ -45,10 +45,10 @@ public class PagesLoadingTest extends BaseClass {
 			test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 			loginMethods.UserLogin();
 			inputs.HamburgerIconClick();
-			genric.element(PagesLoadingObjects.dashboardlink).click();
-			Assert.assertTrue(genric.element(PagesLoadingObjects.dashboardHeader).isDisplayed(), 
+			genric.element(DashboardPageObjects.dashboardlink).click();
+			Assert.assertTrue(genric.element(DashboardPageObjects.dashboardHeader).isDisplayed(), 
 					"Expected: Dashboard Page is Displayed");
-			Assert.assertTrue(genric.element(PagesLoadingObjects.dashboardBCT).isDisplayed(), 
+			Assert.assertTrue(genric.element(DashboardPageObjects.dashboardBCT).isDisplayed(), 
 					"Expected: Dashboard Page BCT is Displayed");			
 
 		}
@@ -84,8 +84,8 @@ public class PagesLoadingTest extends BaseClass {
 						                              By.xpath(".//a[text()='"+ Child + "']")));				
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).click();							
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());			
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());			
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}
 		
@@ -122,8 +122,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());	
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());	
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
 		
@@ -160,8 +160,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());	
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());	
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
 		
@@ -197,8 +197,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());	
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());	
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
             
@@ -234,8 +234,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());		
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());		
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
 		
@@ -272,8 +272,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());	
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());	
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
 		
@@ -314,8 +314,8 @@ public class PagesLoadingTest extends BaseClass {
 			genric.waitForLoading();
 			driver.findElement(By.xpath(".//a[text()='"+ Child + "']")).sendKeys(Keys.ENTER);						
 			genric.waitForLoading();
-			System.out.println(genric.element(PagesLoadingObjects.Page_Header).getText());	
-			Assert.assertEquals((genric.element(PagesLoadingObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
+			System.out.println(genric.element(DashboardPageObjects.Page_Header).getText());	
+			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
 

@@ -6,10 +6,11 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import com.TL.PageMethods.InputsMethods;
-import com.TL.PageMethods.LOPMethods;
-import com.TL.PageMethods.LoginMethods;
-import com.TL.PageMethods.ReportsMethods;
-import com.TL.PageObjects.PagesLoadingObjects;
+import com.TL.PageMethods.LOPApprovalPageMethods;
+import com.TL.PageMethods.LOPPageMethods;
+import com.TL.PageMethods.LoginPageMethods;
+import com.TL.PageMethods.ReportsPageMethods;
+import com.TL.PageObjects.DashboardPageObjects;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -33,11 +34,12 @@ public class BaseClass
 	protected String Testdatasheetpath = PropertyReader
 			.readDataProperty("TestDataSheetPath");
 	protected String methodname;
-	protected ReportsMethods reports;
+	protected ReportsPageMethods reports;
 	protected InputsMethods inputs;
-	protected PagesLoadingObjects PageLoading;
-	protected LoginMethods loginMethods;
-	protected LOPMethods LOPMethods;
+	protected DashboardPageObjects PageLoading;
+	protected LoginPageMethods loginMethods;
+	protected LOPPageMethods LOPPageMethods;
+	protected LOPApprovalPageMethods LOPApprovalPageMethods;
 	protected CsvReader cv;
 	
 	public WebDriver getDriver() {

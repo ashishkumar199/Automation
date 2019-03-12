@@ -1,9 +1,7 @@
 package com.TL.PageObjects;
 
-import com.TL.Base.BaseClass;
 
-
-public class ReportsObjects extends BaseClass{
+public class ReportsPageObjects {
 	
 	
 	public static final String Hamburger_Menu = "xpath:.//i[@class='material-icons' and contains(text(),'menu')]";

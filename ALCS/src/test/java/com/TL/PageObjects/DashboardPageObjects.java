@@ -4,12 +4,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.TL.Base.Genric;
 
-public class PagesLoadingObjects {
+public class DashboardPageObjects {
 	
 	public WebDriver driver;
 	Genric genric;
 	
-	public PagesLoadingObjects(WebDriver driver, Genric genric){
+	public DashboardPageObjects(WebDriver driver, Genric genric){
 		this.driver=driver;
 		this.genric=genric;
 		
@@ -20,6 +20,5 @@ public class PagesLoadingObjects {
 	public static final String dashboardBCT="xpath:.//li[contains(text(), 'Dashboard')]";
 	public static final String All_page_text ="xpath:.//ol[@class = 'breadcrumb']/li[@class = 'active']";
 	public static final String Page_Header ="xpath:.//h1[@class='page-header']";
-	
 	
 }

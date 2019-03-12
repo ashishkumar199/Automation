@@ -9,9 +9,9 @@ import org.testng.ITestResult;
 import org.testng.annotations.DataProvider;
 import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
-import com.TL.PageMethods.LoginMethods;
-import com.TL.PageMethods.ReportsMethods;
-import com.TL.PageObjects.ReportsObjects;
+import com.TL.PageMethods.LoginPageMethods;
+import com.TL.PageMethods.ReportsPageMethods;
+import com.TL.PageObjects.ReportsPageObjects;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.LogStatus;
@@ -27,8 +27,8 @@ public class ReportsTest extends BaseClass {
 		driver.manage().deleteAllCookies();
 		genric.launchApplication();
 		genric.waitForLoading(); 
-		reports = new ReportsMethods(driver, genric);
-		loginMethods = new LoginMethods(driver, genric);
+		reports = new ReportsPageMethods(driver, genric);
+		loginMethods = new LoginPageMethods(driver, genric);
 		cv = new CsvReader(DownloadPath);
 		
 	}	
@@ -39,11 +39,11 @@ public class ReportsTest extends BaseClass {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		reports.proceedToReports();
-		Assert.assertTrue(genric.element(ReportsObjects.View_And_Download_Report_Page) 
+		Assert.assertTrue(genric.element(ReportsPageObjects.View_And_Download_Report_Page) 
 				.isDisplayed(), "Expected: View_And_Download_Report_Page to be displayed");
-		Assert.assertTrue(genric.element(ReportsObjects.Report_View_OR_Download)
+		Assert.assertTrue(genric.element(ReportsPageObjects.Report_View_OR_Download)
 				.isDisplayed(), "Expected: Report_View_OR_Download radio button to be displayed"); 
-		Assert.assertTrue(genric.element(ReportsObjects.Request_Report_Through_mail)
+		Assert.assertTrue(genric.element(ReportsPageObjects.Request_Report_Through_mail)
 				.isDisplayed(), "Expected: Request_Report_Through_mail radio button to be displayed"); 
 	}
 	
@@ -62,7 +62,7 @@ public class ReportsTest extends BaseClass {
 
 	// To verify that correct reports are downloading
 	@Test(dataProvider = "Download.Report")
-	public void TC02_verify_reports_downloading(String Report_Names, String Client_Name_ID) throws IOException {
+	public void TC_02_verify_reports_downloading(String Report_Names, String Client_Name_ID) throws IOException {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName()+"_"+Report_Names);
 		System.out.println(Report_Names + " : " + Client_Name_ID);
 		loginMethods.UserLogin();

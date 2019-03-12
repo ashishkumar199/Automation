@@ -10,13 +10,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
 import com.TL.PageObjects.InputsObjects;
-import com.TL.PageObjects.ReportsObjects;
+import com.TL.PageObjects.ReportsPageObjects;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.PropertyReader;
+import com.TL.Utils.XlsReader;
 
-public class InputsMethods {
+public class InputsMethods extends BaseClass {
 
 	public WebDriver driver;
 	Genric genric;
@@ -33,7 +35,7 @@ public class InputsMethods {
 			
 	public void Go_To_Standard_Offer_Letter_Page()
 	{
-		genric.element(ReportsObjects.Hamburger_Menu).click();
+		genric.element(ReportsPageObjects.Hamburger_Menu).click();
 		genric.element(InputsObjects.Inputs_Btn).click();
 		genric.element(InputsObjects.AssociateMaster_Btn).click();
 		genric.waitForLoading();
@@ -110,6 +112,7 @@ public void go_to_pre_associate_history_page() {
 	}
 
 public void fil_pre_associate_history_details(CsvReader cv) {
+	genric.waitForLoading();
 	dropdown_select_clientNameID();
 	genric.waitForLoading();
 	genric.element(InputsObjects.Associate_name_dropdown).click();
@@ -131,7 +134,7 @@ public void fil_pre_associate_history_details(CsvReader cv) {
 		genric.waitForLoading();
 		dropdown_select_clientNameID();
 		genric.waitForLoading();
-		genric.element(InputsObjects.Associate_name_dropdown).click();;
+		genric.element(InputsObjects.Associate_name_dropdown).click();
 		genric.hardWait(2);
 		try {
 			genric.element(InputsObjects.Associate_name_text_field).sendKeys(cv.read_csv(1, 3));
@@ -148,6 +151,10 @@ public void fil_pre_associate_history_details(CsvReader cv) {
 	genric.waitForLoading();
 	Employee_ID = get_emp_id();
 	Employee_First_Name = Basic_details_First_Name();
+	XlsReader datatable = new XlsReader(Testdatasheetpath);
+	String Sheet = "OfferLetterEmpCreated";
+	datatable.setCellData(Sheet, "EmpID", 1, Employee_ID);
+
 }
 	
 	
@@ -171,13 +178,39 @@ public void fil_pre_associate_history_details(CsvReader cv) {
 		genric.element(InputsObjects.Browse_file_btn).click();
 		genric.hardWait(2);
 		try {
-			Runtime.getRuntime().exec("D:\\ALCS\\src\\test\\resources\\drivers\\FileUpload.exe");
+			Runtime.getRuntime().exec("D:\\ALCS\\Automation\\ALCS\\src\\test\\resources\\drivers\\StandardOfferLetterUpload.exe");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		genric.hardWait(1);
 		genric.element(InputsObjects.upload_btn).click();
+		genric.waitForLoading();
+		}
+	
+	public void upload_Offer_Letter_File_Reset_button(CsvReader cv)  {
+		try {
+			Random_sheet_info(cv);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		genric.element(InputsObjects.MultipleRadio_Btn).click();
+		genric.waitForLoading();
+		dropdown_select_clientNameID();
+		genric.waitForLoading();
+		dropdown_requirement_title();
+		genric.waitForLoading();
+		genric.element(InputsObjects.Browse_file_btn).click();
+		genric.hardWait(2);
+		try {
+			Runtime.getRuntime().exec("D:\\ALCS\\Automation\\ALCS\\src\\test\\resources\\drivers\\StandardOfferLetterUpload.exe");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		genric.hardWait(1);
+		genric.element(InputsObjects.Reset_btn).click();
 		genric.waitForLoading();
 		}
 	

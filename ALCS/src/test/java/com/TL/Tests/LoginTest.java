@@ -9,7 +9,7 @@ import com.TL.Base.BaseClass;
 import com.TL.Base.ExtentManager;
 import com.TL.Base.Genric;
 import com.TL.Base.RetryAnalyzer;
-import com.TL.PageObjects.LoginObjects;
+import com.TL.PageObjects.LoginPageObjects;
 import com.TL.Utils.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
@@ -33,14 +33,13 @@ public class LoginTest extends BaseClass {
 	public void TC_01_Incorrect_Credentials_Login_Failure() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
-		genric.element(LoginObjects.User_Name).sendKeys(
+		genric.element(LoginPageObjects.User_Name).sendKeys(
 				PropertyReader.readDataProperty("invalid_username"));
-		genric.element(LoginObjects.Password).sendKeys(
+		genric.element(LoginPageObjects.Password).sendKeys(
 				PropertyReader.readDataProperty("InvalidPassword"));
-		genric.element(LoginObjects.SignIn_btn).click();
-		Assert.assertTrue(genric.element(LoginObjects.Validation_Msg).isDisplayed(), 
+		genric.element(LoginPageObjects.SignIn_btn).click();
+		Assert.assertTrue(genric.element(LoginPageObjects.Validation_Msg).isDisplayed(), 
 				"Expected: Invalid User ID or Password");
-		System.out.println(genric.element(LoginObjects.Validation_Msg).getText());
 
 	}
 
@@ -49,19 +48,26 @@ public class LoginTest extends BaseClass {
 	public void TC_02_Correct_Credentials_Login_Success() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
-		genric.element(LoginObjects.User_Name).sendKeys(
+		genric.element(LoginPageObjects.User_Name).sendKeys(
 				PropertyReader.readDataProperty("Valid_username"));
-		genric.element(LoginObjects.Password).sendKeys(
+		genric.element(LoginPageObjects.Password).sendKeys(
 				PropertyReader.readDataProperty("ValidPassword"));
-		genric.element(LoginObjects.SignIn_btn).click();
+		genric.element(LoginPageObjects.SignIn_btn).click();
 		genric.waitForLoading();
-		Assert.assertTrue(genric.element(LoginObjects.Teamlease_logo)
-				.isDisplayed(), "Expected: Teamlease Logo to be displayed");
-		Assert.assertTrue(genric.element(LoginObjects.Dashboard_Page)
+		Assert.assertTrue(genric.element(LoginPageObjects.Dashboard_Page)
 				.isDisplayed(), "Expected: Dashboard Page to be displayed"); 
+		Assert.assertTrue(genric.element(LoginPageObjects.Teamlease_logo)
+				.isDisplayed(), "Expected: Teamlease Logo to be displayed");
 	}
 	
-	
+	@Test(retryAnalyzer = RetryAnalyzer.class)
+	public void TC_03_Verify_TL_Logo_On_Login_Page() {
+		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
+		genric.waitForLoading();
+		Assert.assertTrue(genric.element(LoginPageObjects.TLLogo)
+				.isDisplayed(), "Expected: Teamlease Logo to be displayed");
+	}
+		
 	
 	@AfterMethod
     protected void afterMethod(ITestResult result) {

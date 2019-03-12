@@ -8,7 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
-import com.TL.PageObjects.InputsObjects;
+import com.TL.PageObjects.OfferLetterApprovalPageObjects;
+import com.TL.PageObjects.PreAssociateHistoryPageObjects;
 import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.CsvReader;
 
@@ -30,42 +31,42 @@ public class OfferLetterApprovalPageMethods extends BaseClass {
 			
 			genric.element(StandardOfferLetterPageObjects.Inputs_Btn).click();
 			genric.element(StandardOfferLetterPageObjects.AssociateMaster_Btn).click();
-			genric.element(InputsObjects.Offer_Letter_Approval).click();
+			genric.element(OfferLetterApprovalPageObjects.Offer_Letter_Approval).click();
 			genric.waitForLoading();
 			
 		}
 	 
 	 public void dropdown_select_client() {
 			genric.waitForLoading();
-			genric.element(InputsObjects.client_dropdown).click();
+			genric.element(OfferLetterApprovalPageObjects.client_dropdown).click();
 			genric.hardWait(2);
-			genric.element(InputsObjects.client_select).click();
+			genric.element(OfferLetterApprovalPageObjects.client_select).click();
 			genric.waitForLoading();
 		}
 		
 		public void dropdown_select_offerLetterstatusDropDown() {
 			genric.waitForLoading();
-			genric.element(InputsObjects.offer_letter_status_dropdown).click();
+			genric.element(OfferLetterApprovalPageObjects.offer_letter_status_dropdown).click();
 			genric.hardWait(2);
-			genric.element(InputsObjects.offer_letter_status_select).click();
+			genric.element(OfferLetterApprovalPageObjects.offer_letter_status_select).click();
 			genric.waitForLoading();
 		}
 	 
 	 public void go_to_offer_letter_approval_approved_page() {
 			dropdown_select_client();
 			dropdown_select_offerLetterstatusDropDown();
-			genric.element(InputsObjects.associate_pre_history_search_bttn).click();
+			genric.element(PreAssociateHistoryPageObjects.associate_pre_history_search_bttn).click();
 		}
 	 
 	 public String search_approved_offer_letter(CsvReader cv) {
 			Actions action=new Actions(driver);
 			String matched = "";
-			List<WebElement> page_count = genric.elements(InputsObjects.pagination_count_offer_letter_page);
+			List<WebElement> page_count = genric.elements(OfferLetterApprovalPageObjects.pagination_count_offer_letter_page);
 			int counter = 0;
 			for(int j=0; j<page_count.size()-1; j++) {
 				 genric.hardWait(3);
-			List<WebElement> emp_list = genric.elements(InputsObjects.approved_emp_id);	
-			List<WebElement> Emp_name = genric.elements(InputsObjects.approved_emp_id+"[contains(text(), '"+Employee_First_Name+"')]");
+			List<WebElement> emp_list = genric.elements(OfferLetterApprovalPageObjects.approved_emp_id);	
+			List<WebElement> Emp_name = genric.elements(OfferLetterApprovalPageObjects.approved_emp_id+"[contains(text(), '"+Employee_First_Name+"')]");
 			for (int i = 0; i<emp_list.size(); i++) {
 					 if(Emp_name.size() == 1) {
 					 if(Emp_name.get(0).getText().contentEquals(Employee_First_Name)) {
@@ -74,7 +75,7 @@ public class OfferLetterApprovalPageMethods extends BaseClass {
 						Emp_name.get(0).click();
 						 genric.waitForLoading();
 						 genric.SwitchtoNewWindow();
-						 matched = genric.element(InputsObjects.Details_window).getText();
+						 matched = genric.element(OfferLetterApprovalPageObjects.Details_window).getText();
 						genric.CloseNewWindow();
 						 counter++;
 						 break;
@@ -86,8 +87,8 @@ public class OfferLetterApprovalPageMethods extends BaseClass {
 							 Emp_name.get(k).click();
 							 genric.waitForLoading();
 							 genric.SwitchtoNewWindow();
-							 if(genric.element(InputsObjects.Details_window).getText().contentEquals(Employee_ID)) {
-								 matched = genric.element(InputsObjects.Details_window).getText();
+							 if(genric.element(OfferLetterApprovalPageObjects.Details_window).getText().contentEquals(Employee_ID)) {
+								 matched = genric.element(OfferLetterApprovalPageObjects.Details_window).getText();
 								counter++;
 								 break;
 								
@@ -102,7 +103,7 @@ public class OfferLetterApprovalPageMethods extends BaseClass {
 					break;
 				}else {
 					System.out.println(j);
-					action.moveToElement(genric.element(InputsObjects.pagination_count_offer_letter_page+"["+(j+2)+"]")).click().perform();
+					action.moveToElement(genric.element(OfferLetterApprovalPageObjects.pagination_count_offer_letter_page+"["+(j+2)+"]")).click().perform();
 					System.out.println(j);
 				// genric.element(pagination_count_offer_letter_page+"["+(j+2)+"]").click();
 				// driver.navigate().refresh();

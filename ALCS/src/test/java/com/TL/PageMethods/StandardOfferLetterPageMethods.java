@@ -2,14 +2,11 @@ package com.TL.PageMethods;
 
 import java.io.IOException;
 import java.time.LocalDate;
-
 import org.apache.commons.text.RandomStringGenerator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-
 import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
-import com.TL.PageObjects.InputsObjects;
 import com.TL.PageObjects.ReportsPageObjects;
 import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.CsvReader;
@@ -50,9 +47,9 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 	
 	public void dropdown_select_clientNameID() {
 		genric.hardWait(3);
-        genric.element(InputsObjects.clientNameID_dropdown).click();
+        genric.element(StandardOfferLetterPageObjects.clientNameID_dropdown).click();
 		genric.hardWait(3);
-		genric.element(InputsObjects.client_select).click();
+		genric.element(StandardOfferLetterPageObjects.client_select).click();
 		genric.waitForLoading();
 	}
 	
@@ -108,9 +105,9 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 	
 	public void dropdown_requirement_title() {
 		genric.waitForLoading();
-		genric.element(InputsObjects.requirement_title_dropdown).click();
+		genric.element(StandardOfferLetterPageObjects.requirement_title_dropdown).click();
 		genric.waitForLoading();
-		genric.element(InputsObjects.requirement_title_select).click();
+		genric.element(StandardOfferLetterPageObjects.requirement_title_select).click();
 		genric.waitForLoading();
 	}
 	
@@ -128,7 +125,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		genric.waitForLoading();
 		dropdown_requirement_title();
 		genric.waitForLoading();
-		genric.element(InputsObjects.Browse_file_btn).click();
+		genric.element(StandardOfferLetterPageObjects.Browse_file_btn).click();
 		genric.hardWait(2);
 		try {
 			Runtime.getRuntime().exec("D:\\ALCS\\Automation\\ALCS\\src\\test\\resources\\drivers\\StandardOfferLetterUpload.exe");
@@ -137,7 +134,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 			e.printStackTrace();
 		}
 		genric.hardWait(1);
-		genric.element(InputsObjects.upload_btn).click();
+		genric.element(StandardOfferLetterPageObjects.upload_btn).click();
 		genric.waitForLoading();
 	}
 	
@@ -155,7 +152,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		genric.waitForLoading();
 		dropdown_requirement_title();
 		genric.waitForLoading();
-		genric.element(InputsObjects.Browse_file_btn).click();
+		genric.element(StandardOfferLetterPageObjects.Browse_file_btn).click();
 		genric.hardWait(2);
 		try {
 			Runtime.getRuntime().exec("D:\\ALCS\\Automation\\ALCS\\src\\test\\resources\\drivers\\StandardOfferLetterUpload.exe");
@@ -164,13 +161,13 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 			e.printStackTrace();
 		}
 		genric.hardWait(1);
-		genric.element(InputsObjects.Reset_btn).click();
+		genric.element(StandardOfferLetterPageObjects.Reset_btn).click();
 		genric.waitForLoading();
 		}
 	
 	
 	public String all_page_get_text() {
-		return genric.element(InputsObjects.All_page_text).getText();
+		return genric.element(StandardOfferLetterPageObjects.All_page_text).getText();
 	}
 	
 	

@@ -16,7 +16,7 @@ import com.TL.PageMethods.OfferLetterApprovalPageMethods;
 import com.TL.PageMethods.PreAssocoateHistoryPageMethods;
 import com.TL.PageMethods.ReportsPageMethods;
 import com.TL.PageMethods.StandardOfferLetterPageMethods;
-import com.TL.PageObjects.InputsObjects;
+import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.CsvReader;
 
 
@@ -58,7 +58,7 @@ public class OfferLetterTest extends BaseClass {
 		Dashboard.HamburgerIconClick();
 		StandardOL.go_to_offer_letter_page();
 		StandardOL.upload_Offer_Letter_File_Reset_button(cv);
-		Assert.assertEquals(genric.getCurrentURL(), InputsObjects.Standard_Offer_Letter_URL);
+		Assert.assertEquals(genric.getCurrentURL(), StandardOfferLetterPageObjects.Standard_Offer_Letter_URL);
 		
 	}
 	
@@ -70,7 +70,7 @@ public class OfferLetterTest extends BaseClass {
 		Dashboard.HamburgerIconClick();
 		StandardOL.go_to_offer_letter_page();
 		StandardOL.upload_offer_letter_file(cv);
-		Assert.assertTrue(genric.element(InputsObjects.validation_mssg).isDisplayed());
+		Assert.assertTrue(genric.element(StandardOfferLetterPageObjects.validation_mssg).isDisplayed());
 	}
 
 	//To verify Pre-Associate History Page opens successfully
@@ -107,7 +107,15 @@ public class OfferLetterTest extends BaseClass {
 		OLApproval.go_to_Offer_Letter_Approval_page();
 		OLApproval.go_to_offer_letter_approval_approved_page();
 		Assert.assertEquals(OLApproval.search_approved_offer_letter(cv), OfferLetterApprovalPageMethods.Employee_ID);
+	}
 	
+	//upload associate documents on Associate Documentation Verification-LOPS page
+	@Test
+	public void TC_07_AssociateDocumentUpload() {
+		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
+		loginMethods.UserLogin();
+		Dashboard.HamburgerIconClick();
+		
 	}
 
 	@AfterMethod

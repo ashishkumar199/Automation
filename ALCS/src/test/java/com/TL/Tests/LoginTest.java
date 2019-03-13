@@ -60,6 +60,7 @@ public class LoginTest extends BaseClass {
 				.isDisplayed(), "Expected: Teamlease Logo to be displayed");
 	}
 	
+	//To verify Teamlease logo appears on login page
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_03_Verify_TL_Logo_On_Login_Page() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());

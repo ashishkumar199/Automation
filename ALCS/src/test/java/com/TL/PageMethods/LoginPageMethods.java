@@ -16,15 +16,14 @@ public class LoginPageMethods extends BaseClass{
 			this.genric=genric;
 		}
 	
-	// ALCS user login
-		public void UserLogin(){
-			
+		
+    	//ALCS user login
+		public void UserLogin(){			
 			genric.waitForLoading();
 			genric.element(LoginPageObjects.User_Name).sendKeys(PropertyReader.readDataProperty("Valid_username"));
 			genric.element(LoginPageObjects.Password).sendKeys(PropertyReader.readDataProperty("ValidPassword"));
 			genric.element(LoginPageObjects.SignIn_btn).click();
-			genric.waitForLoading();
-			
+			genric.waitForLoading();			
 		}
 
 }

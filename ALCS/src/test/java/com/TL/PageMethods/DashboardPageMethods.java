@@ -15,7 +15,9 @@ public class DashboardPageMethods extends BaseClass{
 		this.driver=driver;
 		this.genric=genric;
 	}
-		
+	
+	
+	//To click on Hamburger menu
 	public  void HamburgerIconClick() {
 		genric.waitForLoading();
 		genric.element(DashboardPageObjects.Main_header).click();

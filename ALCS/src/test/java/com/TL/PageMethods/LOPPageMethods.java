@@ -23,9 +23,7 @@ public class LOPPageMethods extends BaseClass {
 		
 		
 		//To go to Loss of Pay Page
-		public void Go_to_Loss_Of_Pay_Page()
-		{
-		
+		public void Go_to_Loss_Of_Pay_Page() {		
 			genric.waitForLoading();
 			genric.element(LOPPageObjects.Inputs_Dropdown).click();
 			genric.waitForLoading();
@@ -35,8 +33,7 @@ public class LOPPageMethods extends BaseClass {
 		}
 		
 		// Select client to apply LOP
-		public void SelectClientLOP()
-		{
+		public void SelectClientLOP()	{
 			genric.waitForLoading();
 			genric.element(LOPPageObjects.ClientName_ID).click();
 			genric.element(LOPPageObjects.SearchBox).sendKeys("00FBG");
@@ -57,8 +54,7 @@ public class LOPPageMethods extends BaseClass {
 
 		
 		//Select employee and apply LOP
-		public void SelectEmployeeAndApplyLOP()
-		{
+		public void SelectEmployeeAndApplyLOP()	{
 			genric.waitForLoading();		
 			genric.element(LOPPageObjects.EmployeeSearchBox).sendKeys(PropertyReader.readDataProperty("LOPEmployeeID"));
 			genric.element(LOPPageObjects.EmployeeSearchBox).sendKeys(Keys.ENTER);	
@@ -73,13 +69,12 @@ public class LOPPageMethods extends BaseClass {
 		}
 		
 		//Select employee to cancel LOP
-			public void SelectEmployeeAndCancelLOP()
-			{
-				genric.waitForLoading();		
-				genric.element(LOPApprovalPageObjects.LOPCancelCheckBox).click();
-				genric.element(LOPApprovalPageObjects.CancelBtn).click();
-				genric.waitForLoading();
-			    Assert.assertTrue(genric.element(LOPApprovalPageObjects.SuccessMsg).isDisplayed());	    
-			    genric.element(LOPApprovalPageObjects.OKBtn).click();
-			}
+		public void SelectEmployeeAndCancelLOP() {
+			genric.waitForLoading();		
+			genric.element(LOPApprovalPageObjects.LOPCancelCheckBox).click();
+			genric.element(LOPApprovalPageObjects.CancelBtn).click();
+			genric.waitForLoading();
+			Assert.assertTrue(genric.element(LOPApprovalPageObjects.SuccessMsg).isDisplayed());	    
+			genric.element(LOPApprovalPageObjects.OKBtn).click();
+		}
 }

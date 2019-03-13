@@ -31,7 +31,6 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		LOPPageMethods = new LOPPageMethods(driver, genric);
 		LOPApprovalPageMethods = new LOPApprovalPageMethods(driver, genric);
 	
-	
 	}
 
 	//To verify Adding loss of pay for an associate

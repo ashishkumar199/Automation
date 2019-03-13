@@ -15,7 +15,7 @@ public class LopsPageMethods extends BaseClass {
 		this.genric=genric;
 
 	}
-	
+
 	 public void go_To_Lops_Page() {
 			genric.waitForLoading();
 			

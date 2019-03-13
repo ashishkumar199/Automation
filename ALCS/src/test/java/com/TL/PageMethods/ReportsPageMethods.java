@@ -136,7 +136,6 @@ public class ReportsPageMethods extends BaseClass{
 	}
 	
 	// returns newly downloaded file 
-	
 	public static File lastFileModified(String dir) throws FileNotFoundException {
 	    File fl = new File(dir);
 	    File[] files = fl.listFiles(new FileFilter() {          

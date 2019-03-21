@@ -31,7 +31,7 @@ public class PagesLoadingTest extends BaseClass {
 			genric = new Genric(driver);
 			driver = genric.getDriver();
 			driver.manage().window().maximize();
-			driver.manage().deleteAllCookies();
+			driver.manage().deleteAllCookies(); 
 			genric.launchApplication();		
 			Dashboard = new DashboardPageMethods(driver, genric);
 			reports = new ReportsPageMethods(driver, genric);

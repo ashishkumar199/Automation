@@ -5,16 +5,21 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
+
+import com.TL.PageMethods.AssociateConfirmDOJPageMethods;
+import com.TL.PageMethods.AssociateHistoryPageMethods;
 import com.TL.PageMethods.DashboardPageMethods;
 import com.TL.PageMethods.LOPApprovalPageMethods;
 import com.TL.PageMethods.LOPPageMethods;
 import com.TL.PageMethods.LoginPageMethods;
+import com.TL.PageMethods.LopsPageMethods;
 import com.TL.PageMethods.OfferLetterApprovalPageMethods;
 import com.TL.PageMethods.PreAssocoateHistoryPageMethods;
 import com.TL.PageMethods.ReportsPageMethods;
 import com.TL.PageMethods.StandardOfferLetterPageMethods;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.PropertyReader;
+import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -45,7 +50,12 @@ public class BaseClass
 	protected StandardOfferLetterPageMethods StandardOL;
 	protected PreAssocoateHistoryPageMethods PreAssociateHistory;
 	protected OfferLetterApprovalPageMethods OLApproval;
+	protected LopsPageMethods Lops;
+	protected AssociateConfirmDOJPageMethods ConfirmDOJ;
+	protected AssociateHistoryPageMethods AssociateHistory;
 	protected CsvReader cv;
+	protected XlsReader xls;
+	
 	
 	public WebDriver getDriver() {
 		return driver;

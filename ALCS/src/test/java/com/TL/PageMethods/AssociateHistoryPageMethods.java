@@ -3,11 +3,9 @@ package com.TL.PageMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
 import com.TL.Base.BaseClass;
 import com.TL.Base.Genric;
 import com.TL.PageObjects.AssociateHistoryPageObjects;
-import com.TL.PageObjects.LopsPageObjects;
 import com.TL.PageObjects.PreAssociateHistoryPageObjects;
 import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.XlsReader;

@@ -50,7 +50,6 @@ public class OfferLetterTest extends BaseClass {
 		xls = new XlsReader(Testdatasheetpath);
 	}
 
-
 	//To verify Standard offer letter page is loaded successfully.
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_01_go_To_Standard_Offer_Letter_Page() {
@@ -72,7 +71,7 @@ public class OfferLetterTest extends BaseClass {
 		Assert.assertEquals(genric.getCurrentURL(), StandardOfferLetterPageObjects.Standard_Offer_Letter_URL);
 		
 	}
-	
+
 	//To Upload standard offer letter (Mass upload option)
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_03_upload_Standard_Offer_Letter() {
@@ -95,6 +94,7 @@ public class OfferLetterTest extends BaseClass {
 		}
 
 	//To verify uploaded Associate on Pre-Associate History Page
+	//execute this test if offer letter approval needs to be executed
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_05_pre_Associate_History_Search_Page() throws IOException {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());			
@@ -118,7 +118,7 @@ public class OfferLetterTest extends BaseClass {
 		Assert.assertEquals(OLApproval.Find_Associate(), xls.getCellData("OfferLetterEmpCreated", 0, 2));
 		
 	}
-	
+
 	//upload associate documents on Associate Documentation Verification-LOPS page
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_07_AssociateDocumentUpload() {

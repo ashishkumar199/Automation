@@ -190,13 +190,12 @@ public class OfferLetterApprovalPageMethods extends BaseClass {
 		}
 	 
 	 
-	 
+	// Search Associate
 	public String Find_Associate()
 	{ 
 		  XlsReader datatable = new XlsReader(Testdatasheetpath);
 		  String Employee_First_Name = datatable.getCellData("OfferLetterEmpCreated", 0, 3);
-		  String matched = "";
-		  		
+		  String matched = "";		  		
 		  
 		  if(driver.findElement(By.xpath(".//*[text()='"+ Employee_First_Name + "']")).isDisplayed())
 		  {

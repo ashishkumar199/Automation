@@ -31,8 +31,9 @@ public class PreAssocoateHistoryPageMethods extends BaseClass {
 	public static String Employee_ID = "";
 	public static String Employee_First_Name = "";
 	
+	
+	// Go to preassociate History Page
 	public void go_to_pre_associate_history_page() {
-
 	    genric.waitForLoading();
 		genric.element(StandardOfferLetterPageObjects.Inputs_Btn).click();
 		genric.waitForLoading();
@@ -43,6 +44,7 @@ public class PreAssocoateHistoryPageMethods extends BaseClass {
 		
 	}
 	
+	// Select dropdown client Name/Id
 	public void dropdown_select_clientNameID() {
 		genric.hardWait(3);
 		genric.waitUntilClickable(genric.element(PreAssociateHistoryPageObjects.clientNameID_dropdown));
@@ -64,6 +66,7 @@ public class PreAssocoateHistoryPageMethods extends BaseClass {
 		return genric.element(PreAssociateHistoryPageObjects.Basic_details_First_Name).getText();
 	}
 	
+	//Fill associate history page
 	public void fil_pre_associate_history_details(CsvReader cv) {
 		dropdown_select_clientNameID();
 		genric.element(PreAssociateHistoryPageObjects.Associate_name_dropdown).click();

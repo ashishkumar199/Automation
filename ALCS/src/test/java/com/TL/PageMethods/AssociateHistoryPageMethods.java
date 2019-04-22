@@ -21,6 +21,7 @@ public class AssociateHistoryPageMethods extends BaseClass {
 
 	}
 	
+	// Go to Associate History Page
 	 public void go_to_Associate_History_Page() {
 		    genric.waitForLoading();
 			genric.element(StandardOfferLetterPageObjects.Inputs_Btn).click();

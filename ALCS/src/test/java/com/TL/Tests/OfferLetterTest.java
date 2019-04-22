@@ -12,6 +12,7 @@ import com.TL.Base.Genric;
 import com.TL.Base.RetryAnalyzer;
 import com.TL.PageMethods.AssociateConfirmDOJPageMethods;
 import com.TL.PageMethods.AssociateHistoryPageMethods;
+import com.TL.PageMethods.AssociateModifyProfileMethods;
 import com.TL.PageMethods.DashboardPageMethods;
 import com.TL.PageMethods.LoginPageMethods;
 import com.TL.PageMethods.LopsPageMethods;
@@ -21,6 +22,7 @@ import com.TL.PageMethods.ReportsPageMethods;
 import com.TL.PageMethods.StandardOfferLetterPageMethods;
 import com.TL.PageObjects.AssociateConfirmDOJPageObjects;
 import com.TL.PageObjects.AssociateHistoryPageObjects;
+import com.TL.PageObjects.AssociateModifyProfilePageObjects;
 import com.TL.PageObjects.LopsPageObjects;
 import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.CsvReader;
@@ -47,11 +49,12 @@ public class OfferLetterTest extends BaseClass {
 		Lops = new LopsPageMethods(driver, genric);
 		ConfirmDOJ = new AssociateConfirmDOJPageMethods(driver, genric);
 		AssociateHistory = new AssociateHistoryPageMethods(driver, genric);
+		AssociateModifyProfile = new AssociateModifyProfileMethods(driver, genric);
 		xls = new XlsReader(Testdatasheetpath);
-	}
-
+	} 
+    
 	//To verify Standard offer letter page is loaded successfully.
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_01_go_To_Standard_Offer_Letter_Page() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -61,7 +64,7 @@ public class OfferLetterTest extends BaseClass {
 		}
 
 	//To check reset button functionality on standard offer letter page (Mass upload option)
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_02_Standard_Offer_Letter_Reset_Button() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -73,7 +76,7 @@ public class OfferLetterTest extends BaseClass {
 	}
 
 	//To Upload standard offer letter (Mass upload option)
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_03_upload_Standard_Offer_Letter() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -84,7 +87,7 @@ public class OfferLetterTest extends BaseClass {
 	}
 
 	//To verify Pre-Associate History Page opens successfully
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_04_go_To_Pre_Associate_History_Page() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -95,7 +98,7 @@ public class OfferLetterTest extends BaseClass {
 
 	//To verify uploaded Associate on Pre-Associate History Page
 	//execute this test if offer letter approval needs to be executed
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_05_pre_Associate_History_Search_Page() throws IOException {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());			
 		loginMethods.UserLogin();
@@ -107,7 +110,7 @@ public class OfferLetterTest extends BaseClass {
 	}
 
 	//To verify Offer Letter Approval Status
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_06_Offer_Letter_Approval() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -116,11 +119,10 @@ public class OfferLetterTest extends BaseClass {
 		OLApproval.go_to_offer_letter_approval_approved_page();
 	//	OLApproval.search_approved_offer_letter(cv);
 		Assert.assertEquals(OLApproval.Find_Associate(), xls.getCellData("OfferLetterEmpCreated", 0, 2));
-		
 	}
-
+	
 	//upload associate documents on Associate Documentation Verification-LOPS page
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_07_AssociateDocumentUpload() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -134,7 +136,7 @@ public class OfferLetterTest extends BaseClass {
 	}
 
 	//Confirm DOJ
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_08_AssociateConfirmDOJ() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
@@ -160,6 +162,19 @@ public class OfferLetterTest extends BaseClass {
 		Assert.assertEquals(genric.element(AssociateHistoryPageObjects.AssociateNameSearch).getText(), xls.getCellData("OfferLetterEmpCreated", 0, 3));
 	}
 
+	//Associate Modify Profile for single associate, Change Pay Mode
+	@Test
+	public void TC_10_Associate_Modify_Profile() {
+		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
+		loginMethods.UserLogin();
+		Dashboard.HamburgerIconClick();
+		AssociateModifyProfile.go_to_Associate_Modify_Profile_Page();
+		AssociateModifyProfile.dropdown_Select_ClientNameID();
+		AssociateModifyProfile.Search_Newly_Created_Associate_Modify_Profile();
+		AssociateModifyProfile.ChangePayMode();
+		Assert.assertEquals(genric.element(AssociateModifyProfilePageObjects.SuccessPopUp).getText(), "SUCCESS!");
+		}
+
 	@AfterMethod
     protected void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -176,6 +191,6 @@ public class OfferLetterTest extends BaseClass {
         extent.endTest(test);        
         extent.flush();
         driver.quit();
-    }
-
+    }  
+	
 }

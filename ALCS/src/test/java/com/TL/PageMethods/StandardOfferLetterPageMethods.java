@@ -23,9 +23,9 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 	}	
 
 	public static String generatedString = "";
-	
+
+	// Go to Standard offer letter Page
     public void go_to_offer_letter_page() {
-		
 		genric.element(StandardOfferLetterPageObjects.Inputs_Btn).click();
 		genric.element(StandardOfferLetterPageObjects.AssociateMaster_Btn).click();	
 		genric.waitForLoading();		
@@ -34,8 +34,8 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		
 	}	
 	
-	public void Go_To_Standard_Offer_Letter_Page()	{
-		
+    //
+	public void Go_To_Standard_Offer_Letter_Page()	{	
 		genric.element(ReportsPageObjects.Hamburger_Menu).click();
 		go_to_offer_letter_page();
 		genric.element(StandardOfferLetterPageObjects.MultipleRadio_Btn).click();
@@ -45,6 +45,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		genric.waitForLoading();
 	}
 	
+	//select client
 	public void dropdown_select_clientNameID() {
 		genric.hardWait(3);
         genric.element(StandardOfferLetterPageObjects.clientNameID_dropdown).click();
@@ -57,6 +58,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
         return start + (int) Math.round(Math.random() * (end - start));
     }
 	
+	//For creating randon date
 	public static LocalDate createRandomDate(int startYear, int endYear) {
         int day = createRandomIntBetween(1, 28);
         int month = createRandomIntBetween(1, 12);
@@ -64,6 +66,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
         return LocalDate.of(year, month, day);
     }
 	
+	// Generates random values to enter in standard offer letter sheet
 	public void Random_sheet_info(CsvReader cv) throws IOException {
 		long i = 9999999999L;
 		
@@ -103,6 +106,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 	
 		}
 	
+	
 	public void dropdown_requirement_title() {
 		genric.waitForLoading();
 		genric.element(StandardOfferLetterPageObjects.requirement_title_dropdown).click();
@@ -111,7 +115,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		genric.waitForLoading();
 	}
 	
-
+   // upload offer letter
 	public void upload_offer_letter_file(CsvReader cv)  {
 		try {
 			Random_sheet_info(cv);
@@ -138,7 +142,7 @@ public class StandardOfferLetterPageMethods extends BaseClass {
 		genric.waitForLoading();
 	}
 	
-	
+	// reset uploaded offer letter
 	public void upload_Offer_Letter_File_Reset_button(CsvReader cv)  {
 		try {
 			Random_sheet_info(cv);

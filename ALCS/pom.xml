@@ -160,7 +160,7 @@
                              <p>Hi Team,
                                 <br>
                                 <br>								
-								Automated suite was
+								Test Automation suite was
 								executed on ALCS on
 								chrome browser. 
 								<br>
@@ -187,11 +187,14 @@
 							<mailAltConfig>true</mailAltConfig>
 							<!-- Email Authentication(USername and Password) -->
 							<mailuser>ashish.kumar@teamlease.com</mailuser>
-							<mailpassword>Ashish#123</mailpassword>
+							<mailpassword>Ashish@123</mailpassword>
 							<receivers>
-								<!-- To Email address -->
-								<receiver>ashish.kumar@teamlease.com</receiver>
-							
+								<!-- To Email address -->	
+						    	<receiver>ashish.kumar@teamlease.com</receiver>							
+							    <receiver>archit.r@teamlease.com</receiver> 							   
+							    <receiver>dheeraj.shukla@teamlease.com</receiver>
+							    <receiver>shubha.ramakrishna@teamlease.com</receiver>
+							    <receiver>kabir.ahmed@teamlease.com</receiver> 
 							</receivers>
 							<fileSets>
 								

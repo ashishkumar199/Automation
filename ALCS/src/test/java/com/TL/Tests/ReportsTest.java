@@ -72,7 +72,7 @@ public class ReportsTest extends BaseClass {
 		
 	}
 
-	
+
 	 @AfterMethod
 	    protected void afterMethod(ITestResult result) {
 	        if (result.getStatus() == ITestResult.FAILURE) {

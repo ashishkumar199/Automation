@@ -29,7 +29,7 @@ public class LoginTest extends BaseClass {
 	}
 	
 	// Verify that user is not able to login with invalid credentials
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_01_Incorrect_Credentials_Login_Failure() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
@@ -44,7 +44,7 @@ public class LoginTest extends BaseClass {
 	}
 
 	//Verify that user is able to login with valid Login ID and password
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_02_Correct_Credentials_Login_Success() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
@@ -61,14 +61,14 @@ public class LoginTest extends BaseClass {
 	}
 	
 	//To verify Teamlease logo appears on login page
-	@Test(retryAnalyzer = RetryAnalyzer.class)
+	@Test
 	public void TC_03_Verify_TL_Logo_On_Login_Page() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
 		Assert.assertTrue(genric.element(LoginPageObjects.TLLogo)
 				.isDisplayed(), "Expected: Teamlease Logo to be displayed");
 	}
-		
+	
 	
 	@AfterMethod
     protected void afterMethod(ITestResult result) {

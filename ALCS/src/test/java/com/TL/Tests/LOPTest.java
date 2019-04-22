@@ -32,7 +32,7 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		LOPApprovalPageMethods = new LOPApprovalPageMethods(driver, genric);
 	
 	}
-
+	
 	//To verify Adding loss of pay for an associate
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_01_Add_Loss_Of_Pay() {
@@ -43,7 +43,7 @@ ExtentReports extent = ExtentManager.getReporter(filePath);
 		LOPPageMethods.SelectClientLOP();
 		LOPPageMethods.SelectEmployeeAndApplyLOP();
 	}
-	
+
 	//To verify canceling loss of pay for an associate and verify it in cancelled status
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_02_Cancel_Loss_Of_Pay() {

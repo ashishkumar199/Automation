@@ -326,6 +326,7 @@ public class Genric {
 	public List<WebElement> elements(String elementName) {
 		return  driver.findElements(getLocator(elementName));
 	}
+	
 
 	
 	protected By getLocator(String elementName) {

@@ -8,6 +8,7 @@ import org.testng.annotations.AfterSuite;
 
 import com.TL.PageMethods.AssociateConfirmDOJPageMethods;
 import com.TL.PageMethods.AssociateHistoryPageMethods;
+import com.TL.PageMethods.AssociateModifyProfileMethods;
 import com.TL.PageMethods.DashboardPageMethods;
 import com.TL.PageMethods.LOPApprovalPageMethods;
 import com.TL.PageMethods.LOPPageMethods;
@@ -53,6 +54,7 @@ public class BaseClass
 	protected LopsPageMethods Lops;
 	protected AssociateConfirmDOJPageMethods ConfirmDOJ;
 	protected AssociateHistoryPageMethods AssociateHistory;
+	protected AssociateModifyProfileMethods AssociateModifyProfile;
 	protected CsvReader cv;
 	protected XlsReader xls;
 	

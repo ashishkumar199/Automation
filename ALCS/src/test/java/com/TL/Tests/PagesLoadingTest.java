@@ -37,7 +37,7 @@ public class PagesLoadingTest extends BaseClass {
 			reports = new ReportsPageMethods(driver, genric);
 			loginMethods = new LoginPageMethods(driver, genric);
 		}
-		/*
+		
 		// Verify that dashboard page is loading
 		@Test()
 		public void TC_01_DashboardPageLoading() {
@@ -317,7 +317,7 @@ public class PagesLoadingTest extends BaseClass {
 			Assert.assertEquals((genric.element(DashboardPageObjects.Page_Header).getText()), Page_Title, "Expected: Page is Displayed");
 			
 		}   
-*/
+
 	@AfterMethod
     protected void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {

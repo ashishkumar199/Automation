@@ -1,5 +1,7 @@
 package com.TL.Tests;
 
+import java.sql.SQLException;
+
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +13,7 @@ import com.TL.Base.Genric;
 import com.TL.Base.RetryAnalyzer;
 import com.TL.PageObjects.LoginPageObjects;
 import com.TL.Utils.PropertyReader;
+import com.TL.Utils.SQLConnector;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -25,11 +28,11 @@ public class LoginTest extends BaseClass {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		genric.launchApplication();
-
+		sqlconnection = new SQLConnector();
 	}
 	
 	// Verify that user is not able to login with invalid credentials
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_01_Incorrect_Credentials_Login_Failure() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		genric.waitForLoading();
@@ -70,6 +73,14 @@ public class LoginTest extends BaseClass {
 	}
 	
 	
+	@Test
+	public void TC4_SQLQuery() throws ClassNotFoundException, SQLException {
+		//sqlconnection.ExecuteQuery("SELECT top 1 * FROM Miicrras..associate_master where AM_Status = 'A' and AM_Client_ID = '00fbg' order by AM_Created_Date desc" , "AM_Emp_No");
+		Assert.assertEquals((sqlconnection.ExecuteQuery("SELECT top 1 * FROM Miicrras..associate_master where AM_Status = 'A' and AM_Client_ID = '00fbg' order by AM_Created_Date desc" , "AM_Emp_No")), "1605657");	
+	    
+	}
+		
+		
 	@AfterMethod
     protected void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {

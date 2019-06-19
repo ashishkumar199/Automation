@@ -16,20 +16,30 @@
 
 	<dependencies>
 
-	<dependency>
-  	     <groupId>org.testng</groupId>
-   		 <artifactId>testng</artifactId>
-  		 <version>6.14.3</version>
-   	     <scope>test</scope>
-	</dependency>
-
-
+		<dependency>
+  	     	<groupId>org.testng</groupId>
+   		 	<artifactId>testng</artifactId>
+  		 	<version>6.14.3</version>
+   	     	<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>
 			<version>3.6</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>com.hynnet</groupId>
+    		<artifactId>sqljdbc4-chs</artifactId>
+    		<version>4.0.2206.100</version>
+		</dependency>
+		
+		<dependency>
+       		<groupId>net.sourceforge.jtds</groupId>
+        	<artifactId>jtds</artifactId>
+        	<version>1.3.1</version>
+    	</dependency>
 
 	    <dependency>
 			<groupId>javax.mail</groupId>
@@ -191,10 +201,10 @@
 							<receivers>
 								<!-- To Email address -->	
 						    	<receiver>ashish.kumar@teamlease.com</receiver>							
-							    <receiver>archit.r@teamlease.com</receiver> 							   
+							   <!-- <receiver>archit.r@teamlease.com</receiver> 							   
 							    <receiver>dheeraj.shukla@teamlease.com</receiver>
 							    <receiver>shubha.ramakrishna@teamlease.com</receiver>
-							    <receiver>kabir.ahmed@teamlease.com</receiver> 
+							    <receiver>kabir.ahmed@teamlease.com</receiver>  -->	
 							</receivers>
 							<fileSets>
 								

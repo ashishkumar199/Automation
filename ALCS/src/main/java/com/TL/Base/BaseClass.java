@@ -20,6 +20,7 @@ import com.TL.PageMethods.ReportsPageMethods;
 import com.TL.PageMethods.StandardOfferLetterPageMethods;
 import com.TL.Utils.CsvReader;
 import com.TL.Utils.PropertyReader;
+import com.TL.Utils.SQLConnector;
 import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -57,7 +58,7 @@ public class BaseClass
 	protected AssociateModifyProfileMethods AssociateModifyProfile;
 	protected CsvReader cv;
 	protected XlsReader xls;
-	
+	protected SQLConnector sqlconnection;
 	
 	public WebDriver getDriver() {
 		return driver;

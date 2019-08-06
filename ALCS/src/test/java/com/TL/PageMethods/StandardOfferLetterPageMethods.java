@@ -10,6 +10,7 @@ import com.TL.Base.Genric;
 import com.TL.PageObjects.ReportsPageObjects;
 import com.TL.PageObjects.StandardOfferLetterPageObjects;
 import com.TL.Utils.CsvReader;
+import com.TL.Utils.XlsReader;
 
 public class StandardOfferLetterPageMethods extends BaseClass {
 
@@ -67,7 +68,47 @@ public class StandardOfferLetterPageMethods extends BaseClass {
     }
 	
 	// Generates random values to enter in standard offer letter sheet
-	public void Random_sheet_info(CsvReader cv) throws IOException {
+		public void Random_sheet_info(CsvReader cv) throws IOException {
+			long i = 9999999999L;
+			
+			int mobile_start = Integer.parseInt("1000000000");
+			int mobile_end = (int) (long) i;
+			int mobile_number = createRandomIntBetween(mobile_start, mobile_end);
+			String mobile = String.valueOf(mobile_number);
+			System.out.println(mobile);
+			
+			RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('a', 'z')
+				    .build();
+				  generatedString = generator.generate(5);
+			System.out.println(generatedString);
+			
+		    String email = generatedString.concat("@tl.com");
+		    System.out.println(email);
+		    
+		   // String fixed_num = "99999"; 
+			int x = 100000;
+			int y = 999999;
+			    int adhar_start = (int) (long) x;
+			    int adhar_end = (int) (long) y;
+			    int adhar_num1 = createRandomIntBetween(adhar_start, adhar_end);
+			    int adhar_num2 = createRandomIntBetween(adhar_start, adhar_end);
+			    String adhaar = String.valueOf(adhar_num1).concat(String.valueOf(adhar_num2));
+			    System.out.println(adhaar);
+			    
+			    cv.update_csv(1, 9, mobile);
+				cv.update_csv(1, 48, email);
+				cv.update_csv(1, 69, adhaar);
+				cv.update_csv(1, 3, generatedString);
+			
+			 //  xr.setCellData(PropertyReader.readDataProperty("WorkbookName"), "*AssociateMobile", 2, mobile);
+		//xr.setCellData(PropertyReader.readDataProperty("WorkbookName"), "*Email_ID", 2, email);
+//		xr.setCellData(PropertyReader.readDataProperty("WorkbookName"), "*Aadhaar No", 2, adhaar);
+		//xr.setCellData(PropertyReader.readDataProperty("WorkbookName"), "*Associate_Name", 2, generatedString);
+		
+			}
+	
+	// Generates random values to enter in standard offer letter sheet
+	public void Random_sheet_info_OLD(CsvReader cv) throws IOException {
 		long i = 9999999999L;
 		
 		int mobile_start = Integer.parseInt("1000000000");

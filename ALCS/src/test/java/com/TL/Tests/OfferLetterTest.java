@@ -59,6 +59,7 @@ public class OfferLetterTest extends BaseClass {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		Dashboard.HamburgerIconClick();
+		genric.waitForLoading();
 		StandardOL.go_to_offer_letter_page();
 		Assert.assertEquals(StandardOL.all_page_get_text(), "Standard Offer Letter", "Expected:Standard offer Letter text should be present");
 		}
@@ -69,6 +70,7 @@ public class OfferLetterTest extends BaseClass {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		Dashboard.HamburgerIconClick();
+		genric.waitForLoading();
 		StandardOL.go_to_offer_letter_page();
 		StandardOL.upload_Offer_Letter_File_Reset_button(cv);
 		Assert.assertEquals(genric.getCurrentURL(), StandardOfferLetterPageObjects.Standard_Offer_Letter_URL);
@@ -76,11 +78,12 @@ public class OfferLetterTest extends BaseClass {
 	}
 
 	//To Upload standard offer letter (Mass upload option)
-	@Test
+	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_03_upload_Standard_Offer_Letter() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginMethods.UserLogin();
 		Dashboard.HamburgerIconClick();
+		genric.waitForLoading();
 		StandardOL.go_to_offer_letter_page();
 		StandardOL.upload_offer_letter_file(cv);
 		Assert.assertTrue(genric.element(StandardOfferLetterPageObjects.validation_mssg).isDisplayed());
@@ -192,5 +195,5 @@ public class OfferLetterTest extends BaseClass {
         extent.flush();
         driver.quit();
     }  
-	
+
 }

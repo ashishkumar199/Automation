@@ -25,7 +25,7 @@ import com.TL.Utils.XlsReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
- 
+
 public class BaseClass 
 {
 	protected static WebDriver driver;
@@ -35,11 +35,9 @@ public class BaseClass
 	protected  ExtentReports  extent = ExtentManager.getReporter(filePath);
 	protected ExtentTest test;
 	protected String csvpath = PropertyReader
-			.readDataProperty("CSVPath");
-	
+			.readDataProperty("CSVPath");	
 	protected String DownloadPath = PropertyReader
 			.readDataProperty("DownloadPath");
-	
 	protected String Testdatasheetpath = PropertyReader
 			.readDataProperty("TestDataSheetPath");
 	protected String methodname;

@@ -197,7 +197,7 @@
 							<mailAltConfig>true</mailAltConfig>
 							<!-- Email Authentication(USername and Password) -->
 							<mailuser>ashish.kumar@teamlease.com</mailuser>
-							<mailpassword>Ashish@123</mailpassword>
+							<mailpassword>******</mailpassword>
 							<receivers>
 								<!-- To Email address -->	
 						    	<receiver>ashish.kumar@teamlease.com</receiver>							

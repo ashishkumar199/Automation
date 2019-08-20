@@ -20,7 +20,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class LoginTest extends BaseClass {
 
 	ExtentReports extent = ExtentManager.getReporter(filePath);
-	
+
 	@BeforeMethod	
 	public void before() {
 		genric = new Genric(driver);
@@ -30,12 +30,12 @@ public class LoginTest extends BaseClass {
 		genric.launchApplication();
 		sqlconnection = new SQLConnector();
 	}
-	
+
 	// Verify that user is not able to login with invalid credentials
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void TC_01_Incorrect_Credentials_Login_Failure() {
 		test = extent.startTest(this.getClass().getName()+"."+Thread.currentThread().getStackTrace()[1].getMethodName());
-		genric.waitForLoading();
+		genric.waitForLoading(); 
 		genric.element(LoginPageObjects.User_Name).sendKeys(
 				PropertyReader.readDataProperty("invalid_username"));
 		genric.element(LoginPageObjects.Password).sendKeys(
@@ -43,8 +43,8 @@ public class LoginTest extends BaseClass {
 		genric.element(LoginPageObjects.SignIn_btn).click();
 		Assert.assertTrue(genric.element(LoginPageObjects.Validation_Msg).isDisplayed(), 
 				"Expected: Invalid User ID or Password");
-
-	}
+ 
+	} 
 
 	//Verify that user is able to login with valid Login ID and password
 	@Test
